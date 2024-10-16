@@ -48,7 +48,7 @@
           ({ pkgs, ... }: {
             playerConfig = {
               # Your github user:
-              githubLogin = "GITHUB_USER";
+              githubLogin = "soenkehahn";
               # You only need to change this if you changed the forked repo name.
               githubRepo = "nixcon-2024-player-template";
               # The nix derivation that will be used as the server process. It
@@ -57,13 +57,10 @@
               webserver = self.packages.${system}.webserver;
               # If you want to log in to your deployed server, put your SSH key
               # here:
-              sshKey = "<YOUR_PUBLIC_SSH_KEY>";
+              sshKey = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCzsYv/IpqFuE29NVBQrslVqvdeEdPVfQqSg1pVyTh40j2Z3UK8uK6fCSLGyQZNsqyO5B8785tqLL9MoVJMfqVPhSUiRZqXvjMFXuxCTqV5YndXc8qFNfjgPxVGWUrZQsGpFQKj8LAbSXjxdBKFZvuU9/vo9GlxBUhcKdDLax4r/OqGOBSIRb5Cgwt2i85Yi1uB5hivdTL28Csx19IlmlAxJyRRltxOetC2eD9jF3qRQQciz/CjXUSGNKcyI2PhnCpeoH9v7j2+UrTsyN0JVGfMJoOvYW97QE3vYvefK1VGWnU8BrS3ybW4c4snHDr5OzaBNfNkmw765bM89HRiTL+HBbkGx1f739UCdcZnYiUzZBKoJRw4J4XqlIyuApCRrRUOG8PBPcClh1kldMxeJxpmGmIIdvOh++kIffOkOfCnEZUVlmqwLxeeYMZTPJ13yL9bQis1vR2dqeNud25eyK1FbaMTt5GE08Zcg/j39YBLxz/0hK4uE3bQbOA+eCEgypU= shahn@lissabon";
             };
           })
         ];
       };
-
-      # Remove before starting the workshop - this is just for development
-      checks = import ./checks.nix { inherit nixpkgs self; };
     };
 }
