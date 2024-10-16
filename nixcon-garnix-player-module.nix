@@ -1,8 +1,7 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
+{ config
+, lib
+, pkgs
+, ...
 }:
 let
   cfg = config.playerConfig;
@@ -77,6 +76,8 @@ in
     };
 
     garnix.server.enable = true;
+    garnix.server.persistence.enable = true;
+    garnix.server.persistence.name = "true";
 
     services.openssh.enable = true;
 
