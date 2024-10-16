@@ -20,8 +20,51 @@
       let pkgs = import nixpkgs { inherit system; };
       in rec {
         packages = {
-          webserver = pkgs.hello;
-          default = packages.webserver;
+          webserver =
+            let
+              server =
+                ''
+                  import http from "node:http";
+                  import { spawnSync } from "node:child_process";
+
+                  http
+                    .createServer(async (req, res) => {
+                      res.statusCode = 200;
+                      const path = req.url.split("/")
+                      console.debug(path);
+                      if (path[1] === "add" || path[1] === "mult") {
+                        const a = parseInt(path[2]);
+                        const b = parseInt(path[3]);
+                        if (path[1] === "add") {
+                          res.end((a + b).toString());
+                          return;
+                        }
+                        res.end((a * b).toString());
+                        return;
+                      }
+                      if (path[1] === "cowsay") {
+                        res.end(spawnSync("${pkgs.cowsay}/bin/cowsay", [path[2]]).stdout.toString());
+                        return;
+                      }
+                      res.end();
+                    })
+                    .listen(process.env.PORT, () => {
+                      console.log(`Listening on ''\${process.env.PORT}`);
+                    });
+                '';
+              file = pkgs.writeTextFile {
+                name = "file.mjs";
+                text = server;
+              };
+            in
+            pkgs.writeShellApplication {
+              name = "webserver";
+              runtimeInputs = [ pkgs.nodejs ];
+              text =
+                ''
+                  node ${file}
+                '';
+            };
         };
         apps.default = {
           type = "app";
