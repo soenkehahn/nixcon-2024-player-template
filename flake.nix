@@ -43,7 +43,7 @@
                         return;
                       }
                       if (path[1] === "cowsay") {
-                        res.end(spawnSync("${pkgs.cowsay}/bin/cowsay", [path[2]]).stdout.toString());
+                        res.end(spawnSync("${pkgs.cowsay}/bin/cowsay", [decodeURI(path[2])]).stdout.toString());
                         return;
                       }
                       res.end();
