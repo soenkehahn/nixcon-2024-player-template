@@ -42,10 +42,10 @@
                         res.end((a * b).toString());
                         return;
                       }
-                      if (path[1] === "cowsay") {
-                        res.end(spawnSync("${pkgs.cowsay}/bin/cowsay", [decodeURI(path[2])]).stdout.toString());
-                        return;
-                      }
+                      // if (path[1] === "cowsay") {
+                      //   res.end(spawnSync("${pkgs.cowsay}/bin/cowsay", [decodeURI(path[2])]).stdout.toString());
+                      //   return;
+                      // }
                       res.end();
                     })
                     .listen(process.env.PORT, () => {
