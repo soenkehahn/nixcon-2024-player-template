@@ -25,11 +25,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1727096244,
-        "narHash": "sha256-aTF28cd+xUyMhBuyMsSdckdrR54GsagdR8F3fJV2fek=",
+        "lastModified": 1729776976,
+        "narHash": "sha256-AqzYKxSJepAwWyknnH4jQjhG0CPDYGWXKf7xUvRcMIM=",
         "owner": "garnix-io",
         "repo": "garnix-lib",
-        "rev": "d129e58cf37870a96e447c5347f5e827b6166df4",
+        "rev": "126610baaf9cd88f82b7cb8b2b5f168c0e9399a7",
         "type": "github"
       },
       "original": {
