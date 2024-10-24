@@ -76,8 +76,8 @@ in
     };
 
     garnix.server.enable = true;
-    garnix.server.persistence.enable = true;
-    garnix.server.persistence.name = "true";
+    # garnix.server.persistence.enable = true;
+    # garnix.server.persistence.name = "true";
 
     services.openssh.enable = true;
 
