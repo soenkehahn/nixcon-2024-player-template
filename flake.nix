@@ -46,6 +46,10 @@
                         res.end(spawnSync("${pkgs.cowsay}/bin/cowsay", [decodeURI(path[2])]).stdout.toString());
                         return;
                       }
+                      if (path[1] === "uuid") {
+                        res.end("00000000-0000-0000-0000-000000000000");
+                        return;
+                      }
                       res.end();
                     })
                     .listen(process.env.PORT, () => {
